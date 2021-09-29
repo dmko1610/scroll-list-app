@@ -31,7 +31,7 @@ export const App = () => {
   const [taskDesc, setTaskDesc] = React.useState("");
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? Colors.darker : "#FFFFFF",
   };
 
   const getTaskName = data => setTaskName(data);
@@ -39,8 +39,10 @@ export const App = () => {
   const getTaskDesc = data => setTaskDesc(data);
 
   const addItems = () => {
-    const item = {name: taskName, desc: taskDesc};
-    setItems(old => [...old, item]);
+    if (taskName) {
+      const item = {name: taskName, desc: taskDesc};
+      setItems(old => [...old, item]);
+    }
   };
 
   return (
