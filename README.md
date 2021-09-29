@@ -9,3 +9,8 @@ Create list app with input form
 ## Additional requirements
 * should create reusable components
 * time for completion no more than one hour
+
+
+# How it should looks
+
+<img src="https://user-images.githubusercontent.com/42618412/135276275-1875292f-8848-404e-be94-0f7ebe7c12fe.png" alt="drawing" width="400"/>
