@@ -7,6 +7,8 @@ import {
   useColorScheme,
   View,
 } from "react-native";
+import "react-native-get-random-values";
+import {v4 as uuidv4} from "uuid";
 
 import {Colors} from "react-native/Libraries/NewAppScreen";
 import {AddButton} from "./Components/AddButton";
@@ -40,9 +42,14 @@ export const App = () => {
 
   const addItems = () => {
     if (taskName) {
-      const item = {name: taskName, desc: taskDesc};
+      const item = {id: uuidv4(), name: taskName, desc: taskDesc};
       setItems(old => [...old, item]);
     }
+  };
+
+  const deleteItem = id => {
+    const updatedTasks = items.filter(task => task.id !== id);
+    setItems(updatedTasks);
   };
 
   return (
@@ -53,7 +60,7 @@ export const App = () => {
         <AddButton itemsCb={addItems} taskName={taskName} taskDesc={taskDesc} />
       </View>
 
-      <List items={items} />
+      <List items={items} deleteItemCb={deleteItem} />
     </SafeAreaView>
   );
 };

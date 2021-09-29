@@ -2,7 +2,7 @@ import React from "react";
 import {PropTypes} from "prop-types";
 import {View, Text, StyleSheet, Pressable} from "react-native";
 
-export const ListItem = ({item}) => (
+export const ListItem = ({item, onDeleteCb}) => (
   <View style={styles.itemContainer}>
     <View style={styles.columnContainer}>
       <View style={styles.dot} />
@@ -12,6 +12,7 @@ export const ListItem = ({item}) => (
       </View>
     </View>
     <Pressable
+      onPress={() => onDeleteCb(item.id)}
       style={styles.delete}
       android_ripple={{
         color: "#FFFFFF",
@@ -70,4 +71,5 @@ const styles = StyleSheet.create({
 
 ListItem.propTypes = {
   item: PropTypes.object,
+  onDeleteCb: PropTypes.func,
 };
