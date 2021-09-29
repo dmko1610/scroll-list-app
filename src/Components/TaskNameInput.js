@@ -1,6 +1,6 @@
 import React from "react";
 import {PropTypes} from "prop-types";
-import {View, Text, TextInput} from "react-native";
+import {View, Text, TextInput, StyleSheet} from "react-native";
 
 export const TaskNameInput = ({taskNameCb}) => {
   const [name, setName] = React.useState("");
@@ -9,21 +9,10 @@ export const TaskNameInput = ({taskNameCb}) => {
     taskNameCb(event.nativeEvent.text);
   };
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        alignItems: "center",
-      }}>
-      <Text>Task:</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>Name:</Text>
       <TextInput
-        placeholder="task"
-        style={{
-          borderWidth: 2,
-          borderColor: "#000000",
-          padding: 5,
-          width: 200,
-        }}
+        style={styles.input}
         value={name}
         onChange={onChange}
       />
@@ -31,6 +20,25 @@ export const TaskNameInput = ({taskNameCb}) => {
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  label: {
+    fontSize: 20,
+    marginHorizontal: 10,
+  },
+  input: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#000000",
+    padding: 5,
+    width: 200,
+    marginVertical: 10,
+  },
+});
+
 TaskNameInput.propTypes = {
-  taskNameCb: PropTypes.string,
+  taskNameCb: PropTypes.func,
 };
