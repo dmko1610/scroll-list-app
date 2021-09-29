@@ -1,4 +1,5 @@
 import React from "react";
+import {PropTypes} from "prop-types";
 import {View, Text, TextInput} from "react-native";
 
 export const TaskNameInput = ({taskNameCb}) => {
@@ -28,4 +29,8 @@ export const TaskNameInput = ({taskNameCb}) => {
       />
     </View>
   );
+};
+
+TaskNameInput.propTypes = {
+  taskNameCb: PropTypes.string,
 };

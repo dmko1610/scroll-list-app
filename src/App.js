@@ -1,6 +1,6 @@
 import React from "react";
+import {PropTypes} from "prop-types";
 import {
-  FlatList,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -67,3 +67,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 });
+
+InputItems.propTypes = {
+  taskNameCb: PropTypes.func,
+  taskDescCb: PropTypes.func,
+};

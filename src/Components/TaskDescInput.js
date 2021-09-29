@@ -1,4 +1,5 @@
 import React from "react";
+import {PropTypes} from "prop-types";
 import {View, Text, TextInput} from "react-native";
 
 export const TaskDescInput = ({taskDescCb}) => {
@@ -25,4 +26,8 @@ export const TaskDescInput = ({taskDescCb}) => {
       />
     </View>
   );
+};
+
+TaskDescInput.propTypes = {
+  taskDescCb: PropTypes.string,
 };

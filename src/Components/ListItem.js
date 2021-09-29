@@ -1,4 +1,5 @@
 import React from "react";
+import {PropTypes} from "prop-types";
 import {View, Text} from "react-native";
 
 export const ListItem = ({item}) => (
@@ -7,3 +8,7 @@ export const ListItem = ({item}) => (
     <Text>{item.desc}</Text>
   </View>
 );
+
+ListItem.propTypes = {
+  item: PropTypes.object,
+};

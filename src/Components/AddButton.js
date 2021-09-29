@@ -1,4 +1,5 @@
 import React from "react";
+import {PropTypes} from "prop-types";
 import {Pressable, StyleSheet, Text} from "react-native";
 
 export const AddButton = ({itemsCb}) => (
@@ -16,3 +17,7 @@ export const AddButton = ({itemsCb}) => (
     <Text style={{color: "white", fontSize: 30}}>Add</Text>
   </Pressable>
 );
+
+AddButton.propTypes = {
+  itemsCb: PropTypes.func,
+};
