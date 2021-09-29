@@ -5,18 +5,30 @@ import {Pressable, StyleSheet, Text} from "react-native";
 export const AddButton = ({itemsCb}) => (
   <Pressable
     onPress={() => itemsCb()}
-    style={{
-      backgroundColor: "blue",
-      borderWidth: StyleSheet.hairlineWidth,
-      borderRadius: 20,
-      width: 70,
-      height: 50,
-      justifyContent: "center",
-      alignItems: "center",
+    style={styles.button}
+    android_ripple={{
+      color: "#FFFFFF",
+      borderless: false,
     }}>
-    <Text style={{color: "white", fontSize: 30}}>Add</Text>
+    <Text style={styles.text}>Add</Text>
   </Pressable>
 );
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "darkblue",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 10,
+    width: 80,
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    color: "#FFFFFF",
+    fontSize: 23,
+  },
+});
 
 AddButton.propTypes = {
   itemsCb: PropTypes.func,
