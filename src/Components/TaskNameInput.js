@@ -2,7 +2,7 @@ import React from "react";
 import {PropTypes} from "prop-types";
 import {View, Text, TextInput, StyleSheet} from "react-native";
 
-export const TaskNameInput = ({taskNameCb}) => {
+export const TaskNameInput = ({taskNameCb, onSubmitCb}) => {
   const [name, setName] = React.useState("");
   const onChange = event => {
     setName(event.nativeEvent.text);
@@ -15,6 +15,7 @@ export const TaskNameInput = ({taskNameCb}) => {
         style={styles.input}
         value={name}
         onChange={onChange}
+        onSubmitEditing={onSubmitCb}
       />
     </View>
   );
@@ -41,4 +42,5 @@ const styles = StyleSheet.create({
 
 TaskNameInput.propTypes = {
   taskNameCb: PropTypes.func,
+  onSubmitCb: PropTypes.func,
 };

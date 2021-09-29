@@ -1,10 +1,10 @@
 import React from "react";
 import {PropTypes} from "prop-types";
-import {Pressable, StyleSheet, Text} from "react-native";
+import {Keyboard, Pressable, StyleSheet, Text} from "react-native";
 
 export const AddButton = ({itemsCb}) => (
   <Pressable
-    onPress={() => itemsCb()}
+    onPress={() => { Keyboard.dismiss(); itemsCb();}}
     style={styles.button}
     android_ripple={{
       color: "#FFFFFF",

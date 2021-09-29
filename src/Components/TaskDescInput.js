@@ -2,7 +2,7 @@ import React from "react";
 import {PropTypes} from "prop-types";
 import {View, Text, TextInput, StyleSheet} from "react-native";
 
-export const TaskDescInput = ({taskDescCb}) => {
+export const TaskDescInput = React.forwardRef(({taskDescCb}, ref) => {
   const [desc, setDesc] = React.useState("");
 
   const onChange = event => {
@@ -14,13 +14,14 @@ export const TaskDescInput = ({taskDescCb}) => {
     <View style={styles.container}>
       <Text style={styles.label}>Descr:</Text>
       <TextInput
+        ref={ref}
         style={styles.input}
         value={desc}
         onChange={onChange}
       />
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -44,3 +45,5 @@ const styles = StyleSheet.create({
 TaskDescInput.propTypes = {
   taskDescCb: PropTypes.func,
 };
+
+TaskDescInput.displayName = "TaskDescInput";

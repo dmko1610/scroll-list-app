@@ -16,16 +16,21 @@ import {List} from "./Components/List";
 import {TaskDescInput} from "./Components/TaskDescInput";
 import {TaskNameInput} from "./Components/TaskNameInput";
 
-const InputItems = ({taskNameCb, taskDescCb}) => {
-  return (
-    <View style={styles.inputContainer}>
-      <TaskNameInput taskNameCb={taskNameCb} />
-      <TaskDescInput taskDescCb={taskDescCb} />
-    </View>
-  );
-};
+const InputItems = React.forwardRef(
+  ({taskNameCb, taskDescCb, makeFocused}, ref) => {
+    return (
+      <View style={styles.inputContainer}>
+        <TaskNameInput onSubmitCb={makeFocused} taskNameCb={taskNameCb} />
+        <TaskDescInput ref={ref} taskDescCb={taskDescCb} />
+      </View>
+    );
+  },
+);
+
+InputItems.displayName = "InputItems";
 
 export const App = () => {
+  const inputRef = React.useRef(null);
   const isDarkMode = useColorScheme() === "dark";
 
   const [items, setItems] = React.useState([]);
@@ -35,6 +40,8 @@ export const App = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : "#FFFFFF",
   };
+
+  const makeFocused = () => inputRef.current.focus();
 
   const getTaskName = data => setTaskName(data);
 
@@ -56,7 +63,12 @@ export const App = () => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
       <View style={styles.controlContainer}>
-        <InputItems taskNameCb={getTaskName} taskDescCb={getTaskDesc} />
+        <InputItems
+          ref={inputRef}
+          makeFocused={makeFocused}
+          taskNameCb={getTaskName}
+          taskDescCb={getTaskDesc}
+        />
         <AddButton itemsCb={addItems} taskName={taskName} taskDesc={taskDesc} />
       </View>
 
@@ -80,4 +92,5 @@ const styles = StyleSheet.create({
 InputItems.propTypes = {
   taskNameCb: PropTypes.func,
   taskDescCb: PropTypes.func,
+  makeFocused: PropTypes.func,
 };
