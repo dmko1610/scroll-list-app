@@ -15,6 +15,7 @@ export const TaskDescInput = React.forwardRef(({taskDescCb}, ref) => {
       <Text style={styles.label}>Descr:</Text>
       <TextInput
         ref={ref}
+        onFocus={() => setDesc("")}
         style={styles.input}
         value={desc}
         onChange={onChange}
